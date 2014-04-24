@@ -5,4 +5,21 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+    <!-- navigation drawer items -->
+    <string-array name="navigation_drawer_items">
+        <item >restaurant</item>
+        <item >food_item</item>
+        <item >location</item>
+        <item >time</item>
+        <item >category</item>
+    </string-array>
+
+    <!-- navigation drawer icons -->
+    <array name="navigation_drawer_icons">
+        <item>@drawable/placeholder_0</item>
+        <item>@drawable/placeholder_1</item>
+        <item>@drawable/placeholder_2</item>
+        <item>@drawable/placeholder_3</item>
+        <item>@drawable/placeholder_4</item>
+    </array>
 </resources>
