@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="osu_orange">#dd5800</color>
+    <color name="osu_grey">#cccccc</color>
+    <color name="osu_light_orange">#FF9900</color>
+    <color name="osu_black">#333333</color>
+    <color name="osu_orange_pantone">#dd5800</color>
+</resources>
