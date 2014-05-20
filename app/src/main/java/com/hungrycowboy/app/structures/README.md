@@ -1,0 +1,3 @@
+#About
+ * The purpose of this file is to ensure the integrity of the structures folder
+  - The structures folder will contain objects that one would designate a "structure", a structure is any object that represents real world data that we would want to keep track of. The only files that would remain in the structure folder are java classes that you would feel comfortable porting to another java application.
