@@ -29,7 +29,7 @@ public class Restaurant {
      * @param   name    The name of the Restaurant object, should be the name they advertise
      * @return          Returns a reference to the object for chainability
      */
-    public Restaurant set_name(String name) {
+    public Restaurant setName(String name) {
         this.name = name;
         return this;
     }
@@ -39,7 +39,7 @@ public class Restaurant {
      *
      * @return          Returns a string reference to the member variable name
      */
-    public String get_name() {
+    public String getName() {
         return this.name;
     }
 
@@ -49,7 +49,7 @@ public class Restaurant {
      * @param   address The legal address of the restaurant
      * @return          Returns a reference to the object
      */
-    public Restaurant set_address(Address address) {
+    public Restaurant setAddress(Address address) {
         this.address = address;
         return this;
     }
@@ -59,7 +59,7 @@ public class Restaurant {
      *
      * @return          Returns the member variable address
      */
-    public Address get_address() {
+    public Address getAddress() {
         return this.address;
     }
 
@@ -70,7 +70,7 @@ public class Restaurant {
      *                  on the time of day.
      * @return          Returns a reference to the object
      */
-    public Restaurant set_menus(FoodMenu[] menus) {
+    public Restaurant setMenus(FoodMenu[] menus) {
         this.menus = menus;
         return this;
     }
@@ -80,7 +80,7 @@ public class Restaurant {
      *
      * @return          Returns the members variable reference
      */
-    public FoodMenu[] get_menus() {
+    public FoodMenu[] getMenus() {
         return this.menus;
     }
 
@@ -90,7 +90,7 @@ public class Restaurant {
      * @param   openHours   This array should contain all open hours that the restaurant is open.
      * @return              Returns a reference to the object
      */
-    public Restaurant set_open_hours(OpenHours openHours) {
+    public Restaurant setOpenHours(OpenHours openHours) {
         this.openHours = openHours;
         return this;
     }
@@ -100,7 +100,7 @@ public class Restaurant {
      *
      * @return @param       Returns an array of all open hours
      */
-    public OpenHours get_open_hours() {
+    public OpenHours getOpenHours() {
         return this.openHours;
     }
 }
