@@ -11,21 +11,38 @@ import android.os.Parcelable;
 public class Address extends com.hungrycowboy.app.structures.Address implements Parcelable {
 
     /**
+     * Deeply copies the parent class to the sub class
+     * @param parentObj
+     */
+    public Address(com.hungrycowboy.app.structures.Address parentObj) {
+        this.setAddressLineOne(parentObj.getAddressLineOne())
+                .setAddressLineTwo(parentObj.getAddressLineTwo())
+                .setCity(parentObj.getCity())
+                .setState(parentObj.getState())
+                .setPostalCode(parentObj.getPostalCode())
+                .setCountry(parentObj.getCountry())
+                .setUniversity(parentObj.getUniversity())
+                .setBuilding(parentObj.getBuilding())
+                .setLatitude(parentObj.getLatitude())
+                .setLongitude(parentObj.getLongitude());
+    }
+
+    /**
      * The order of the parcel in is VERY important.
      * Should ALWAYS be in the same order as the parcel out
      * @param in the parcelable object.
      */
     public Address(Parcel in) {
-        this.setAddressLineOne(in.readString());
-        this.setAddressLineTwo(in.readString());
-        this.setCity(in.readString());
-        this.setState(in.readString());
-        this.setPostalCode(in.readString());
-        this.setCountry(in.readString());
-        this.setUniversity(in.readString());
-        this.setBuilding(in.readString());
-        this.setLatitude(in.readDouble());
-        this.setLongitude(in.readDouble());
+        this.setAddressLineOne(in.readString())
+                .setAddressLineTwo(in.readString())
+                .setCity(in.readString())
+                .setState(in.readString())
+                .setPostalCode(in.readString())
+                .setCountry(in.readString())
+                .setUniversity(in.readString())
+                .setBuilding(in.readString())
+                .setLatitude(in.readDouble())
+                .setLongitude(in.readDouble());
     }
 
     /**
