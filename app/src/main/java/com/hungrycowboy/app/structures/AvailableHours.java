@@ -10,7 +10,7 @@ import java.util.GregorianCalendar;
  * @since 05/24/2014
  *
  */
-public class OpenHours {
+public class AvailableHours {
 
     private GregorianCalendar dateStart;
     private GregorianCalendar dateEnd;
@@ -18,7 +18,7 @@ public class OpenHours {
     /**
      * Default Empty Constructor
      */
-    public OpenHours() {
+    public AvailableHours() {
     }
 
     /**
@@ -26,7 +26,7 @@ public class OpenHours {
      * @param dateStart the time when the restaurant opens
      * @param dateEnd the time when the restaurant closes
      */
-    public OpenHours(GregorianCalendar dateStart, GregorianCalendar dateEnd) {
+    public AvailableHours(GregorianCalendar dateStart, GregorianCalendar dateEnd) {
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
     }
@@ -69,7 +69,7 @@ public class OpenHours {
      *          true if the restaurant is open.
      *          false if it is not.
      */
-    public boolean canUse() {
+    public boolean isAvailable() {
 
         GregorianCalendar currentTime = new GregorianCalendar();
 
@@ -87,7 +87,7 @@ public class OpenHours {
      */
     public long timeAvailable(long currentTime) {
 
-        if(canUse()) {
+        if(isAvailable()) {
             return dateEnd.getTimeInMillis() - currentTime;
         }
 
