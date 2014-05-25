@@ -60,30 +60,58 @@ public class FoodItem {
         this.cost = cost;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     *
+     * @param description
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     *
+     * @return
+     */
     public BigDecimal getCost() {
         return cost;
     }
 
+    /**
+     *
+     * @param cost
+     */
     public void setCost(BigDecimal cost) {
         this.cost = cost;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return name + "\n" + cost + "\n" + description;
