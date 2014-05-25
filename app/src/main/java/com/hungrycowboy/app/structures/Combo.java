@@ -6,18 +6,20 @@ import android.os.Parcelable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
+import com.hungrycowboy.app.adapter.parcel.AvailableHoursParcel;
+
 /**
  * This data structure contains various food items with it's cost, as well as when it is available.
  * @author Marcus Gabilheri
  * @version 1.0
  * @since 05/24/2014
  */
-public class Combo implements Parcelable {
+public class Combo {
 
     private String comboAlias, name;
     private ArrayList<FoodItem> comboItems;
     private BigDecimal cost;
-    private AvailableHours hours;
+    private AvailableHoursParcel hours;
 
     /**
      *
@@ -42,7 +44,7 @@ public class Combo implements Parcelable {
      * @param comboItems
      * @param hours
      */
-    public Combo(String comboAlias, String name, ArrayList<FoodItem> comboItems, AvailableHours hours) {
+    public Combo(String comboAlias, String name, ArrayList<FoodItem> comboItems, AvailableHoursParcel hours) {
         this.comboAlias = comboAlias;
         this.name = name;
         this.comboItems = comboItems;
@@ -60,35 +62,6 @@ public class Combo implements Parcelable {
     }
 
     /**
-     * Constructor necessary for the Parcelable implementation.
-     * Parcelable allows this object to be passes easily from one activity to another.
-     * It might be necessary in the future.
-     * @param in the parcelable object.
-     */
-    @SuppressWarnings("unchecked")
-    public Combo(Parcel in) {
-        this.comboAlias = in.readString();
-        this.name = in.readString();
-        this.cost = new BigDecimal(in.readString());
-        this.comboItems = in.readArrayList(ClassLoader.getSystemClassLoader());
-        this.hours = in.readParcelable(ClassLoader.getSystemClassLoader());
-    }
-
-    /**
-     * This is the method necessary to recreate an object after it has been parceled.
-     */
-    public static final Parcelable.Creator<Combo> CREATOR
-            = new Parcelable.Creator<Combo>() {
-        public Combo createFromParcel(Parcel in) {
-            return new Combo(in);
-        }
-
-        public Combo[] newArray(int size) {
-            return new Combo[size];
-        }
-    };
-
-    /**
      *
      * @param comboAlias
      * @param name
@@ -96,7 +69,7 @@ public class Combo implements Parcelable {
      * @param cost
      * @param hours
      */
-    public Combo(String comboAlias, String name, ArrayList<FoodItem> comboItems, BigDecimal cost, AvailableHours hours) {
+    public Combo(String comboAlias, String name, ArrayList<FoodItem> comboItems, BigDecimal cost, AvailableHoursParcel hours) {
         this.comboAlias = comboAlias;
         this.name = name;
         this.comboItems = comboItems;
@@ -172,7 +145,7 @@ public class Combo implements Parcelable {
      *
      * @return
      */
-    public AvailableHours getHours() {
+    public AvailableHoursParcel getHours() {
         return hours;
     }
 
@@ -180,31 +153,7 @@ public class Combo implements Parcelable {
      *
      * @param hours
      */
-    public void setHours(AvailableHours hours) {
+    public void setHours(AvailableHoursParcel hours) {
         this.hours = hours;
-    }
-
-
-    /**
-     *
-     * @return
-     */
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    /**
-     *
-     * @param out
-     * @param flags
-     */
-    @Override
-    public void writeToParcel(Parcel out, int flags) {
-        out.writeString(getComboAlias());
-        out.writeString(getName());
-        out.writeString(getCost().toString());
-        out.writeList(getComboItems());
-        out.writeParcelable(getHours(), 0);
     }
 }
