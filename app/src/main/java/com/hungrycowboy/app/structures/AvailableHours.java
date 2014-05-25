@@ -1,5 +1,8 @@
 package com.hungrycowboy.app.structures;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.GregorianCalendar;
 
 /**
@@ -10,7 +13,7 @@ import java.util.GregorianCalendar;
  * @since 05/24/2014
  *
  */
-public class AvailableHours {
+public class AvailableHours implements Parcelable {
 
     private GregorianCalendar dateStart;
     private GregorianCalendar dateEnd;
@@ -30,6 +33,31 @@ public class AvailableHours {
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
     }
+
+    /**
+     * Constructor necessary for the Parcelable implementation.
+     * Parcelable allows this object to be passes easily from one activity to another.
+     * It might be necessary in the future.
+     * @param in the parcelable object.
+     */
+    public AvailableHours(Parcel in) {
+        this.dateStart = (GregorianCalendar) in.readSerializable();
+        this.dateEnd = (GregorianCalendar) in.readSerializable();
+    }
+
+    /**
+     * Creator necessary for any parcelable object.
+     */
+    public static final Parcelable.Creator<AvailableHours> CREATOR
+            = new Parcelable.Creator<AvailableHours>() {
+        public AvailableHours createFromParcel(Parcel in) {
+            return new AvailableHours(in);
+        }
+
+        public AvailableHours[] newArray(int size) {
+            return new AvailableHours[size];
+        }
+    };
 
     /**
      *
@@ -94,4 +122,14 @@ public class AvailableHours {
         return 0;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel out, int flags) {
+        out.writeSerializable(getDateStart());
+        out.writeSerializable(getDateEnd());
+    }
 }

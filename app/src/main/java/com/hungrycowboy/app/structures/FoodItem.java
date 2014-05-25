@@ -1,5 +1,8 @@
 package com.hungrycowboy.app.structures;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.math.BigDecimal;
 
 /**
@@ -8,7 +11,7 @@ import java.math.BigDecimal;
  * @version 1.0
  * @since 05/25/2014
  */
-public class FoodItem {
+public class FoodItem implements Parcelable {
 
     private String name;
     private String description;
@@ -19,6 +22,31 @@ public class FoodItem {
      */
     public FoodItem() {}
 
+    /**
+     * Constructor necessary for the Parcelable implementation.
+     * Parcelable allows this object to be passes easily from one activity to another.
+     * It might be necessary in the future.
+     * @param in the parcelable object.
+     */
+    public FoodItem(Parcel in) {
+        this.name = in.readString();
+        this.description = in.readString();
+        this.cost = new BigDecimal(in.readString());
+    }
+
+    /**
+     * This is the method necessary to recreate an object after it has been parceled.
+     */
+    public static final Parcelable.Creator<FoodItem> CREATOR
+            = new Parcelable.Creator<FoodItem>() {
+        public FoodItem createFromParcel(Parcel in) {
+            return new FoodItem(in);
+        }
+
+        public FoodItem[] newArray(int size) {
+            return new FoodItem[size];
+        }
+    };
 
     /**
      * Constructor used for foods without description or cost
@@ -115,5 +143,26 @@ public class FoodItem {
     @Override
     public String toString() {
         return name + "\n" + cost + "\n" + description;
+    }
+
+    /**
+     *
+     * @return
+     */
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    /**
+     * Method that will create the parcelable object
+     * @param out the parcelable object
+     * @param flags I have no idea for what this is used.
+     */
+    @Override
+    public void writeToParcel(Parcel out, int flags) {
+        out.writeString(getName());
+        out.writeString(getDescription());
+        out.writeString(getCost().toString());
     }
 }

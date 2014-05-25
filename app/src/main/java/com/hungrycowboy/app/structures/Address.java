@@ -1,12 +1,15 @@
 package com.hungrycowboy.app.structures;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * This class represents a single address from a restaurant
  * @author Marcus Gabilheri
  * @version 1.0
  * @since 5/24/2014
  */
-public class Address {
+public class Address implements Parcelable {
 
     private String addressLineOne, addressLineTwo, postalCode, city, state, country, university, building;
     private double latitude, longitude; // For future use with Google Maps integration
@@ -50,6 +53,38 @@ public class Address {
         this.latitude = latitude;
         this.longitude = longitude;
     }
+
+    /**
+     * The order of the parcel in is VERY important.
+     * Should ALWAYS be in the same order as the parcel out
+     * @param in the parcelable object.
+     */
+    public Address(Parcel in) {
+        this.addressLineOne = in.readString();
+        this.addressLineTwo = in.readString();
+        this.city = in.readString();
+        this.state = in.readString();
+        this.postalCode = in.readString();
+        this.country = in.readString();
+        this.university = in.readString();
+        this.building = in.readString();
+        this.latitude = in.readDouble();
+        this.longitude = in.readDouble();
+    }
+
+    /**
+     *
+     */
+    public static final Parcelable.Creator<Address> CREATOR
+            = new Parcelable.Creator<Address>() {
+        public Address createFromParcel(Parcel in) {
+            return new Address(in);
+        }
+
+        public Address[] newArray(int size) {
+            return new Address[size];
+        }
+    };
 
     /**
      *
@@ -215,5 +250,34 @@ public class Address {
     public String toString() {
         return getAddressLineOne() + "\n" + getAddressLineTwo() + "\n" + getCity() + ", " + getState() + "\n"
                 + getPostalCode() + ", " + getCountry();
+    }
+
+    /**
+     *
+     * @return
+     */
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    /**
+     *
+     * @param out
+     * @param flags
+     */
+    @Override
+    public void writeToParcel(Parcel out, int flags) {
+        out.writeString(getAddressLineOne());
+        out.writeString(getAddressLineTwo());
+        out.writeString(getCity());
+        out.writeString(getState());
+        out.writeString(getPostalCode());
+        out.writeString(getCountry());
+        out.writeString(getUniversity());
+        out.writeString(getBuilding());
+        out.writeDouble(getLatitude());
+        out.writeDouble(getLongitude());
+
     }
 }
