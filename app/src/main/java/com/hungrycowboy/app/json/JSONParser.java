@@ -34,12 +34,21 @@ public class JSONParser {
     static JSONObject jObj = null;
     static String json = "";
 
-    // Constructor
-
+    /**
+     *
+     */
     public JSONParser() {
 
     }
 
+    /**
+     * Function to retrieve a JSON from a URL.
+     * It can be used as a alternative to the makeHttpRequest when Params or method are not needed.
+     * @param url
+     *              the URL where the server side file is
+     * @return
+     *              an JSONObject with the requested data. Can be handled in a JSON Array and easily be fetched
+     */
     public JSONObject getJSONFromURL(String url) {
 
         // Making HTTP request
@@ -87,9 +96,22 @@ public class JSONParser {
         return jObj;
     }
 
-    // Function get json from url
-    // by making HTTP Post or Get Method
-
+    /**
+     *
+     * This function makes an HTTP Request to a file over the network
+     * @param url
+     *              the URL where the server side file is
+     * @param method
+     *              The method of sending data Ex: POST, GET, etc..
+     * @param params
+     *              Should be a List<NameValuePair> example:
+     *              List<NameValuePair> params = new List<>();
+     *              params.add("name", myName);
+     *              params.add("cost", myCost);
+     *
+     * @return
+     *              an JSONObject with the requested data. Can be handled in a JSON Array and easily be fetched
+     */
     public JSONObject makeHttpRequest(String url, String method, List<NameValuePair> params) {
 
         // Making http request
