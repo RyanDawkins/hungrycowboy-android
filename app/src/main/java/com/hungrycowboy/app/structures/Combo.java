@@ -69,9 +69,9 @@ public class Combo implements Parcelable {
     public Combo(Parcel in) {
         this.comboAlias = in.readString();
         this.name = in.readString();
-        this.cost = new BigDecimal(in.readString());
-        this.comboItems = in.readArrayList(ClassLoader.getSystemClassLoader());
-        this.hours = in.readParcelable(ClassLoader.getSystemClassLoader());
+        this.cost = (BigDecimal) in.readValue(BigDecimal.class.getClassLoader());
+        this.comboItems = in.readArrayList(FoodItem.class.getClassLoader());
+        this.hours = in.readParcelable(AvailableHours.class.getClassLoader());
     }
 
     /**
@@ -115,9 +115,11 @@ public class Combo implements Parcelable {
     /**
      *
      * @param comboAlias
+     * @return
      */
-    public void setComboAlias(String comboAlias) {
+    public Combo setComboAlias(String comboAlias) {
         this.comboAlias = comboAlias;
+        return this;
     }
 
     /**
@@ -131,9 +133,11 @@ public class Combo implements Parcelable {
     /**
      *
      * @param name
+     * @return
      */
-    public void setName(String name) {
+    public Combo setName(String name) {
         this.name = name;
+        return this;
     }
 
     /**
@@ -147,9 +151,11 @@ public class Combo implements Parcelable {
     /**
      *
      * @param comboItems
+     * @return
      */
-    public void setComboItems(ArrayList<FoodItem> comboItems) {
+    public Combo setComboItems(ArrayList<FoodItem> comboItems) {
         this.comboItems = comboItems;
+        return this;
     }
 
     /**
@@ -163,9 +169,11 @@ public class Combo implements Parcelable {
     /**
      *
      * @param cost
+     * @return
      */
-    public void setCost(BigDecimal cost) {
+    public Combo setCost(BigDecimal cost) {
         this.cost = cost;
+        return this;
     }
 
     /**
@@ -179,9 +187,11 @@ public class Combo implements Parcelable {
     /**
      *
      * @param hours
+     * @return
      */
-    public void setHours(AvailableHours hours) {
+    public Combo setHours(AvailableHours hours) {
         this.hours = hours;
+        return this;
     }
 
 
@@ -203,7 +213,7 @@ public class Combo implements Parcelable {
     public void writeToParcel(Parcel out, int flags) {
         out.writeString(getComboAlias());
         out.writeString(getName());
-        out.writeString(getCost().toString());
+        out.writeValue(getCost());
         out.writeList(getComboItems());
         out.writeParcelable(getHours(), 0);
     }

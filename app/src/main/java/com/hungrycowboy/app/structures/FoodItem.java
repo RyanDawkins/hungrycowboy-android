@@ -31,7 +31,7 @@ public class FoodItem implements Parcelable {
     public FoodItem(Parcel in) {
         this.name = in.readString();
         this.description = in.readString();
-        this.cost = new BigDecimal(in.readString());
+        this.cost = (BigDecimal) in.readValue(BigDecimal.class.getClassLoader());
     }
 
     /**
@@ -99,9 +99,11 @@ public class FoodItem implements Parcelable {
     /**
      *
      * @param name
+     * @return
      */
-    public void setName(String name) {
+    public FoodItem setName(String name) {
         this.name = name;
+        return this;
     }
 
     /**
@@ -115,9 +117,11 @@ public class FoodItem implements Parcelable {
     /**
      *
      * @param description
+     * @return
      */
-    public void setDescription(String description) {
+    public FoodItem setDescription(String description) {
         this.description = description;
+        return this;
     }
 
     /**
@@ -131,9 +135,11 @@ public class FoodItem implements Parcelable {
     /**
      *
      * @param cost
+     * @return
      */
-    public void setCost(BigDecimal cost) {
+    public FoodItem setCost(BigDecimal cost) {
         this.cost = cost;
+        return this;
     }
 
     /**
@@ -163,6 +169,6 @@ public class FoodItem implements Parcelable {
     public void writeToParcel(Parcel out, int flags) {
         out.writeString(getName());
         out.writeString(getDescription());
-        out.writeString(getCost().toString());
+        out.writeValue(getCost());
     }
 }

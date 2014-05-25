@@ -71,8 +71,10 @@ public class AvailableHours implements Parcelable {
      *
      * @param dateStart
      */
-    public void setDateStart(GregorianCalendar dateStart) {
+    public AvailableHours setDateStart(GregorianCalendar dateStart) {
+
         this.dateStart = dateStart;
+        return this;
     }
 
     /**
@@ -87,8 +89,9 @@ public class AvailableHours implements Parcelable {
      *
      * @param dateEnd
      */
-    public void setDateEnd(GregorianCalendar dateEnd) {
+    public AvailableHours setDateEnd(GregorianCalendar dateEnd) {
         this.dateEnd = dateEnd;
+        return this;
     }
 
     /**

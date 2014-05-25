@@ -205,9 +205,11 @@ public class Address implements Parcelable {
     /**
      *
      * @param building
+     * @return
      */
-    public void setBuilding(String building) {
+    public Address setBuilding(String building) {
         this.building = building;
+        return this;
     }
 
     /**
@@ -221,9 +223,11 @@ public class Address implements Parcelable {
     /**
      *
      * @param latitude
+     * @return
      */
-    public void setLatitude(double latitude) {
+    public Address setLatitude(double latitude) {
         this.latitude = latitude;
+        return this;
     }
 
     /**
@@ -237,9 +241,11 @@ public class Address implements Parcelable {
     /**
      *
      * @param longitude
+     * @return
      */
-    public void setLongitude(double longitude) {
+    public Address setLongitude(double longitude) {
         this.longitude = longitude;
+        return this;
     }
 
     /**
