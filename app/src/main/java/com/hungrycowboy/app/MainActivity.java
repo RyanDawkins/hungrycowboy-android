@@ -2,8 +2,11 @@ package com.hungrycowboy.app;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.hungrycowboy.app.structures.Address;
 
 
 public class MainActivity extends Activity {
