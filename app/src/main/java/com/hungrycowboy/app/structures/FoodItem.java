@@ -73,9 +73,11 @@ public class FoodItem {
     /**
      *
      * @param name
+     * @return
      */
-    public void setName(String name) {
+    public FoodItem setName(String name) {
         this.name = name;
+        return this;
     }
 
     /**
@@ -89,9 +91,11 @@ public class FoodItem {
     /**
      *
      * @param description
+     * @return
      */
-    public void setDescription(String description) {
+    public FoodItem setDescription(String description) {
         this.description = description;
+        return this;
     }
 
     /**
@@ -105,9 +109,11 @@ public class FoodItem {
     /**
      *
      * @param cost
+     * @return
      */
-    public void setCost(BigDecimal cost) {
+    public FoodItem setCost(BigDecimal cost) {
         this.cost = cost;
+        return this;
     }
 
     /**

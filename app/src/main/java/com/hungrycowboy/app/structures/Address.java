@@ -181,6 +181,7 @@ public class Address {
     /**
      *
      * @param building
+     * @return
      */
     public Address setBuilding(String building) {
         this.building = building;
@@ -198,6 +199,7 @@ public class Address {
     /**
      *
      * @param latitude
+     * @return
      */
     public Address setLatitude(double latitude) {
         this.latitude = latitude;
@@ -215,6 +217,7 @@ public class Address {
     /**
      *
      * @param longitude
+     * @return
      */
     public Address setLongitude(double longitude) {
         this.longitude = longitude;

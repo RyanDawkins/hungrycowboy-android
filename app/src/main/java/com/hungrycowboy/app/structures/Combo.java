@@ -1,8 +1,4 @@
 package com.hungrycowboy.app.structures;
-
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
@@ -88,9 +84,11 @@ public class Combo {
     /**
      *
      * @param comboAlias
+     * @return
      */
-    public void setComboAlias(String comboAlias) {
+    public Combo setComboAlias(String comboAlias) {
         this.comboAlias = comboAlias;
+        return this;
     }
 
     /**
@@ -104,9 +102,11 @@ public class Combo {
     /**
      *
      * @param name
+     * @return
      */
-    public void setName(String name) {
+    public Combo setName(String name) {
         this.name = name;
+        return this;
     }
 
     /**
@@ -120,9 +120,11 @@ public class Combo {
     /**
      *
      * @param comboItems
+     * @return
      */
-    public void setComboItems(ArrayList<FoodItem> comboItems) {
+    public Combo setComboItems(ArrayList<FoodItem> comboItems) {
         this.comboItems = comboItems;
+        return this;
     }
 
     /**
@@ -136,9 +138,11 @@ public class Combo {
     /**
      *
      * @param cost
+     * @return
      */
-    public void setCost(BigDecimal cost) {
+    public Combo setCost(BigDecimal cost) {
         this.cost = cost;
+        return this;
     }
 
     /**
@@ -152,8 +156,10 @@ public class Combo {
     /**
      *
      * @param hours
+     * @return
      */
-    public void setHours(AvailableHoursParcel hours) {
+    public Combo setHours(AvailableHoursParcel hours) {
         this.hours = hours;
+        return this;
     }
 }
