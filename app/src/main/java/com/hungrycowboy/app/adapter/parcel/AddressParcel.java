@@ -2,19 +2,20 @@ package com.hungrycowboy.app.adapter.parcel;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import com.hungrycowboy.app.structures.Address;
 
 /**
  * Class to deal with Parceable objects
  *
  * @author Ryan Dawkins
  */
-public class Address extends com.hungrycowboy.app.structures.Address implements Parcelable {
+public class AddressParcel extends Address implements Parcelable {
 
     /**
      * Deeply copies the parent class to the sub class
      * @param parentObj
      */
-    public Address(com.hungrycowboy.app.structures.Address parentObj) {
+    public AddressParcel(Address parentObj) {
         this.setAddressLineOne(parentObj.getAddressLineOne())
                 .setAddressLineTwo(parentObj.getAddressLineTwo())
                 .setCity(parentObj.getCity())
@@ -32,7 +33,7 @@ public class Address extends com.hungrycowboy.app.structures.Address implements 
      * Should ALWAYS be in the same order as the parcel out
      * @param in the parcelable object.
      */
-    public Address(Parcel in) {
+    public AddressParcel(Parcel in) {
         this.setAddressLineOne(in.readString())
                 .setAddressLineTwo(in.readString())
                 .setCity(in.readString())
@@ -87,14 +88,14 @@ public class Address extends com.hungrycowboy.app.structures.Address implements 
     /**
      *
      */
-    public static final Parcelable.Creator<Address> CREATOR
-            = new Parcelable.Creator<Address>() {
-        public Address createFromParcel(Parcel in) {
-            return new Address(in);
+    public static final Parcelable.Creator<AddressParcel> CREATOR
+            = new Parcelable.Creator<AddressParcel>() {
+        public AddressParcel createFromParcel(Parcel in) {
+            return new AddressParcel(in);
         }
 
-        public Address[] newArray(int size) {
-            return new Address[size];
+        public AddressParcel[] newArray(int size) {
+            return new AddressParcel[size];
         }
     };
 
