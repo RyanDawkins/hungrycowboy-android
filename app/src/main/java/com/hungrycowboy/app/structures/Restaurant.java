@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * @version 1.0
  * @since 5/25/14
  */
-public class Restaurant implements Parcelable {
+public class Restaurant {
 
     private String name;
     private Address address;
@@ -78,44 +78,6 @@ public class Restaurant implements Parcelable {
         this.combos = combos;
         this.openHours = openHours;
     }
-
-    /**
-     *
-     * @param in
-     */
-    public Restaurant(Parcel in) {
-        name = in.readString();
-        address = (Address) in.readValue(Address.class.getClassLoader());
-        if (in.readByte() == 0x01) {
-            foodItems = new ArrayList<FoodItem>();
-            in.readList(foodItems, FoodItem.class.getClassLoader());
-        } else {
-            foodItems = null;
-        }
-        if (in.readByte() == 0x01) {
-            combos = new ArrayList<Combo>();
-            in.readList(combos, Combo.class.getClassLoader());
-        } else {
-            combos = null;
-        }
-        openHours = (AvailableHours) in.readValue(AvailableHours.class.getClassLoader());
-    }
-
-    /**
-     *
-     */
-    @SuppressWarnings("unused")
-    public static final Parcelable.Creator<Restaurant> CREATOR = new Parcelable.Creator<Restaurant>() {
-        @Override
-        public Restaurant createFromParcel(Parcel in) {
-            return new Restaurant(in);
-        }
-
-        @Override
-        public Restaurant[] newArray(int size) {
-            return new Restaurant[size];
-        }
-    };
 
     /**
      *
@@ -207,36 +169,4 @@ public class Restaurant implements Parcelable {
         return this;
     }
 
-    /**
-     *
-     * @return
-     */
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    /**
-     *
-     * @param out
-     * @param flags
-     */
-    @Override
-    public void writeToParcel(Parcel out, int flags) {
-        out.writeString(name);
-        out.writeValue(address);
-        if (foodItems == null) {
-            out.writeByte((byte) (0x00));
-        } else {
-            out.writeByte((byte) (0x01));
-            out.writeList(foodItems);
-        }
-        if (combos == null) {
-            out.writeByte((byte) (0x00));
-        } else {
-            out.writeByte((byte) (0x01));
-            out.writeList(combos);
-        }
-        out.writeValue(openHours);
-    }
 }
