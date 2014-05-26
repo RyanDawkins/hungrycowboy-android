@@ -15,7 +15,7 @@ public class Combo {
     private String comboAlias, name;
     private ArrayList<FoodItem> comboItems;
     private BigDecimal cost;
-    private AvailableHoursParcel hours;
+    private AvailableHours hours;
 
     /**
      *
@@ -149,7 +149,7 @@ public class Combo {
      *
      * @return
      */
-    public AvailableHoursParcel getHours() {
+    public AvailableHours getHours() {
         return hours;
     }
 

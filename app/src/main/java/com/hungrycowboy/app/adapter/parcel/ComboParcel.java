@@ -62,6 +62,6 @@ public class ComboParcel extends Combo implements Parcelable {
         out.writeString(getName());
         out.writeString(getCost().toString());
         out.writeList(getComboItems());
-        out.writeParcelable(getHours(), 0);
+        out.writeParcelable((AvailableHoursParcel)(getHours()), 0);
     }
 }
